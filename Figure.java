@@ -89,6 +89,8 @@ public class Figure extends Object{
 	private void Move(int x, int y)
 	{
 		// Logic: Move Figure to the cell with x and y coordinates
+		System.out.printf("you are at X =  : ",x," , Y = ",y);
+		
 	}
 	
 	public void Step()
@@ -118,6 +120,7 @@ public class Figure extends Object{
 	public void FallIntoWater()
 	{
 		// Logic: Fall into the water
+		System.out.println("You Fell into Water : Use a Diving Suit or a Rope to Save yourself ");
 	}
 	
 	public boolean HasAShowel()
@@ -142,6 +145,7 @@ public class Figure extends Object{
 	public void CollectItem()
 	{
 		// Logic: Collect an Item on the cell
+		System.out.println("Item Received");
 	}
 	
 	public String getName()
@@ -153,6 +157,7 @@ public class Figure extends Object{
 	{
 		// Logic: Remove snow level based on some logic e.g. if E a snow level > 0 and
 		// you have a shovel
+		System.out.println("Snow Removed");
 	}
 
 	public String getCellsName(int x, int y)
@@ -195,6 +200,7 @@ public class Figure extends Object{
 	public void Die()
 	{
 		// Logic: Destroy the object
+		System.out.println("This Figure Died ");
 	}
 	@Override
 	public void Used() {
