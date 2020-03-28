@@ -8,13 +8,14 @@ public class Iceberg extends Matrix{
 	// Coordinates of the iceberg on the map
 	private int x;
 	private int y;
-	
+	//added by : Achref in order to use it in the Explorer class 
+	public int capacity;
 	// Blizzard on the iceberg
 	private Blizzard blizzard;
 
-	public Iceberg(int height, int width) {
+	public Iceberg(int height, int width, int cap) {
 		super(height, width);
-		
+		capacity=cap;
 		// Properties of Blizzard is equal to the properties of the iceberg (so location and area)
 		blizzard = new Blizzard(height, width, x, y);
 	}
