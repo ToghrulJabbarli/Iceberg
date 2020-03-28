@@ -209,6 +209,11 @@ public class Figure extends Object{
 		return false;
 	}
 
+	public void showOnGUI() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }

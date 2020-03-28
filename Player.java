@@ -14,9 +14,9 @@ public class Player{
 	{
 		this.Name = Name;
 		//Generating ID of the player between 1000000 and 9999999
-		while(this.idExists(ID) != false)
+		while(idExists(ID) != false)
 		{
-			ID = this.getRandomIDInRange(1000000, 9999999);	
+			ID = getRandomIDInRange(1000000, 9999999);	
 		}
 		
 		
