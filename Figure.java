@@ -1,0 +1,214 @@
+package Icefield;
+
+import java.util.List;
+
+public class Figure extends Object{
+	
+	// Current Map where the figure is playing
+	private static Cell[][] map_cells;
+	
+	// Total count of the move possibilities
+	private Integer moveCount;
+	
+	
+	private String Name;
+	
+	private int Health;
+	
+	private List<String> Skills;
+	private int SkillsCount;
+	
+	private List<Object> Items;
+	private int ItemsCount;
+	
+	public Figure(String Name,int Health,int SkillsCount, int ItemsCount)
+	{
+		this.Name = Name;
+		this.Health = Health; 
+		this.SkillsCount = SkillsCount;
+		this.ItemsCount = ItemsCount;
+		
+		// Gets the coordinates and info of Map Cells
+		this.map_cells = Map.getMapCells();
+		
+		// moveCount = ANY_NUMBER
+	}
+	
+	// Adding Skill
+	public void addSkill(String skill)
+	{
+		Skills.add(skill);
+	}
+	
+	public void removeSkill(int index)
+	{
+		Skills.remove(index);
+	}
+	
+	// Adding Item
+	public void addItem(Object item)
+	{
+		Items.add(item);
+	}
+	
+	public void removeItem(int index)
+	{
+		Items.remove(index);
+	}
+	
+	public void IncrementHealth()
+	{
+		Health++;
+	}
+	
+	public void DecrementHealth()
+	{
+		Health--;
+	}
+	
+	public void IncrementSkills()
+	{
+		SkillsCount++;
+	}
+	
+	public void DecrementSkills()
+	{
+		SkillsCount--;
+	}
+	
+	public void IncrementsItems()
+	{
+		ItemsCount++;
+	}
+	
+	public void DecrementItems()
+	{
+		ItemsCount--;
+	}
+	
+	private void Move(int x, int y)
+	{
+		// Logic: Move Figure to the cell with x and y coordinates
+	}
+	
+	public void Step()
+	{
+		// Logic: Step on a particular cell based on the information you have.
+		// E.g Without Show 1 step with 2 step
+		// Up, Down , Right , Left is possible
+		moveCount--;
+	}
+	
+	public void EatFood()
+	{
+		// Logic: Eat food, increment health decrements move count
+		Health++;
+		moveCount--;
+	}
+	
+	
+	
+	public boolean isWater()
+	{
+		// Logic: Checks whether cell is a water or not
+		
+		return true;
+	}
+	
+	public void FallIntoWater()
+	{
+		// Logic: Fall into the water
+	}
+	
+	public boolean HasAShowel()
+	{
+		// Logic: Checks whether player has a shovel or not
+		return true;
+	}
+	
+	
+	
+	public void Object_Use(Object obj)
+	{
+		// Logic: Use a particular object
+	}
+	
+	public void Skill_Use()
+	{
+		// Logic: Use a particular skill
+		moveCount--;
+	}
+	
+	public void CollectItem()
+	{
+		// Logic: Collect an Item on the cell
+	}
+	
+	public String getName()
+	{
+		return this.Name;
+	}
+	
+	public void removeSnow()
+	{
+		// Logic: Remove snow level based on some logic e.g. if E a snow level > 0 and
+		// you have a shovel
+	}
+
+	public String getCellsName(int x, int y)
+	{
+		// Logic: Check the name of the cell
+		
+		return this.map_cells[x][y].name();
+	}
+	
+	public boolean cellIsCoveredBy(int x, int y)
+	{
+		// Logic: Check whether the cell's with coordinates (x and y) state is snow and
+		// check it's level
+		
+		return true;
+		
+	}
+	
+	public void getTheObject(Object object)
+	{
+		// Logic: If the object is visible , then retreive it
+		if(object.isSeen)
+		{
+			Items.add(object);
+			System.out.print("Object is retrieved!");
+		}
+	}
+	
+	// Checks the health of the figure in every frame
+	public void checkHealth()
+	{
+		if(this.Health == 0)
+		{
+			System.out.print("Figure (" + this.Name + ")"+
+		" died!");
+			this.Die();
+		}
+	}
+	
+	public void Die()
+	{
+		// Logic: Destroy the object
+	}
+	@Override
+	public void Used() {
+		
+		System.out.println("Figure is moved!");
+		
+	}
+
+	@Override
+	public boolean isUsed() {
+		// Logic: Check whether Figure is moved or not
+		return false;
+	}
+
+	
+
+}
