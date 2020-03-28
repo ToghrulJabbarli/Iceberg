@@ -25,6 +25,16 @@ public class Settings {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				System.out.println("You chosed one Eskimo Figure!");
+				/*
+				 * new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						UpdateFigures(new Eskimo("Eskimo", 5, 4, 0));
+					}
+				}).start();
+				 */
 			}
 		});
 		explorerButton.addActionListener(new ActionListener() {
@@ -33,6 +43,16 @@ public class Settings {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				System.out.println("You chosed one Explorer Figure!");
+				/*
+				 * new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						UpdateFigures(new Explorer("Explorer", 4, 4, 0));
+					}
+				}).start();
+				 */
 			}
 		});
 		doneButton.addActionListener(new ActionListener() {
@@ -45,6 +65,16 @@ public class Settings {
 			}
 		});
 		
+	}
+	
+	public static void UpdateFigures(Figure figure) {
+		int numPlayers=Map.players.size();
+		if (numPlayers==0) {
+			Map.players.get(0).figures.add(figure);
+		}
+		else {
+			Map.players.get(numPlayers-1).figures.add(figure);
+		}
 	}
 	
 	public void ChooseFigures() {
