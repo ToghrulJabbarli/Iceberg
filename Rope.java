@@ -5,6 +5,7 @@ public class Rope extends Object{
 	@Override
 	public void Used() {
 		System.out.println("Rope was taken! ");
+		used = true;
 	}
 
 	@Override
@@ -12,15 +13,19 @@ public class Rope extends Object{
 		
 		// Logic: Checks whether flare is used or not
 		
-		return false;
+		return used;
 	}
 
 	
-	public void Use() {
+	public void Use(Figure rescuing_figure) {
 		
-		// Logic
+		if(owner.used)
+			rescuing_figure.Move(0,0);
+		System.out.println("The figure has been rescued successfully !");
+		
 	}
 	
+
 	
 
 }
