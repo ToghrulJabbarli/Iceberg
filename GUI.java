@@ -38,7 +38,7 @@ public class GUI {
 	{
 		mainMenu = new MainMenu();
 		settings = new Settings();
-		map = new Map(height, width, mainMenu.getPlayers());
+		map = new Map(height, width, Map.getPlayers());
 	}
 	
 	
