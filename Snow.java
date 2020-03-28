@@ -27,6 +27,12 @@ public class Snow extends Object {
 	@Override
 	public boolean isUsed() {
 		// Logic: Check whether snow was set up or not
+		if(this.level>0)
+		{
+			//for printing only
+			this.Used();
+			return true;
+		}
 		return false;
 	}
 
