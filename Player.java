@@ -6,37 +6,29 @@ import java.util.Random;
 public class Player{
 	
 	private String Name;
-	private int ID;
+	private static int ID;
+	private int Player_ID;
 	
 	public List<Figure> figures;
 	
 	public Player(String Name)
 	{
 		this.Name = Name;
-		//Generating ID of the player between 1000000 and 9999999
-		while(this.idExists(ID) != false)
-		{
-			ID = this.getRandomIDInRange(1000000, 9999999);	
-		}
-		
-		
+		this.Player_ID = ID;
+		//Generating ID
+		ID++;
 	}
 	
-	public static boolean idExists(int ID1)
+	public int getID() // added by Murad & Toghrul
 	{
-		// Logic: Check whether player with this ID exists
-		return true;
+		return Player_ID;
 	}
 	
-	// Player ID Generation
-	private static int getRandomIDInRange(int min, int max) {
-
-		if (min >= max) {
-			throw new IllegalArgumentException("max must be greater than min");
-		}
-
-		Random r = new Random();
-		return r.nextInt((max - min) + 1) + min;
+	public String getName() { // added by Murad & Toghrul
+		return Name;
 	}
+	
+	
+	
 
 }
