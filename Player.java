@@ -22,7 +22,7 @@ public class Player{
 		
 	}
 	
-	public static boolean idExists(int ID)
+	public static boolean idExists(int ID1)
 	{
 		// Logic: Check whether player with this ID exists
 		return true;
