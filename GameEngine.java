@@ -18,6 +18,7 @@ public class GameEngine {
 	public void setWinner()
 	{
 		// Logic: Setting up the winner based on logical operations
+		System.out.println(" The winner is : ");
 	}
 	
 	public void CellCondition()
@@ -25,6 +26,7 @@ public class GameEngine {
 		/*Check whether stepping cell is steppable or not
 		 *. If yes then step on it , if not then not(If other figure stays on it
 		 *. If it's a water fall into the water)*/
+		System.out.println("The Cell is Steppable ");
 	}
 	
 
