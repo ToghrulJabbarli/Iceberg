@@ -42,6 +42,7 @@ public class GUI {
 	}
 	
 	
+	
 	public void ShowGUI()
 	{
 		// Logic: Show GUI.
@@ -73,6 +74,13 @@ public class GUI {
 		
 	}
 	
+	
+	public void SetMap(Map map) // added by Murad & Toghrul
+	{
+		// Logic: Draw the map
+		this.map = map;
+	}
+	
 	public boolean EndGUI()
 	{
 		// Logic: End GUI
@@ -85,7 +93,7 @@ public class GUI {
 		private static final int ROW=15;
 		private static final int COLUMN=20;
 		
-		public Iceberg[][] icebergs=new Iceberg[ROW][COLUMN];
+		public Iceberg[][] icebergs =new Iceberg[ROW][COLUMN];
 		private static final int ICEBERG_GAP = 2;
 		private static final int ICEBERG_ARC = 20;
 		private static final int ICEBERG_SIZE = 38;
@@ -100,7 +108,7 @@ public class GUI {
 		public void initGame() {
 			for (int indexRow = 0; indexRow < ROW; indexRow++) {
 				for (int indexCol = 0; indexCol < COLUMN; indexCol++) {
-					icebergs[indexRow][indexCol] = new Iceberg(ICEBERG_SIZE,ICEBERG_SIZE);
+				//	icebergs[indexRow][indexCol] = new Iceberg(ICEBERG_SIZE,ICEBERG_SIZE,25, map); // What is that? Add DrawMap() and then set up icebergs submatrices on it.
 				}
 			}
 		}
@@ -117,6 +125,13 @@ public class GUI {
 
 			
 		}
+		
+		public void DrawMap()//Added by Murad & Toghrul
+		{
+			// Logic: ......
+		}
+		
+		
 		
 		
 		public void DrawIceberg(Graphics g, int i, int j) {
