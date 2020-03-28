@@ -22,11 +22,7 @@ public class MainMenu implements ActionListener{
 	JButton jb2=new JButton("Start");
 	JLabel label1 = new JLabel("Username: ");
 	JTextField tf1 = new JTextField("");
-	public List<Player> players=new ArrayList<Player>();
 	
-	public List<Player> getPlayers() {
-		return players;
-	}
 	
 	
 	public String username; 
@@ -69,7 +65,7 @@ public class MainMenu implements ActionListener{
 		// TODO Auto-generated method stub
 		if (e.getSource()==jb1) {
 			username=tf1.getText();
-			//this.UpdatePlayers(username);
+			
 			new Thread(new Runnable() {
 				
 				@Override
@@ -78,6 +74,7 @@ public class MainMenu implements ActionListener{
 					UpdatePlayers(username);
 				}
 			}).start();
+			
 			System.out.println(username+" Player Added!");
 			new Settings().ChooseFigures();
 			tf1.setText("");
