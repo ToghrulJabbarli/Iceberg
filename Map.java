@@ -14,15 +14,18 @@ public class Map extends Matrix{
 		private List<Snow> snowList;
 		
 		// List of players 
-		static List<Player> players=new ArrayList<Player>();
+		static List<Player> players;
 		
 		// Number of players on the map = size of players
 		private Integer numberOfPlayers;
 		
 		
-		public void showOnGUI()
+		public void showOnGUI(GUI gui, Map map)
 		{
 			// Logic: show this object in GUI
+		   gui.SetMap(map);
+		   System.out.print("Map is set in the GUI! \n");
+			
 		}
 		
 		public Map(int height, int width,List<Player> players)
@@ -34,6 +37,8 @@ public class Map extends Matrix{
 			
 			// Setting up the players on the map
 			players = new ArrayList<Player>();
+			
+			System.out.print("Map and Players are set!");
 		}
 		
 		
@@ -57,12 +62,27 @@ public class Map extends Matrix{
 		public void FillObject(Object object) {
 		
 			// Logic: Fill the object to the cell of the matrix
+			System.out.print("Object is filled! ");
 			
 		}
 		
-		private void GenerateIcebergsOnMap()
+		void SetIcebergs(Iceberg[] icebergs)
 		{
-			// Logic: Generate Iceberg (Submatrices) on the map (Matrix)
+			this.icebergs = icebergs;
+		}
+		
+		void GenerateIcebergsOnMap()
+		{
+			
+			if(icebergs.length != 0)
+			{
+				for(int i = 0; i < icebergs.length; i++)
+				{
+					// Logic: Generate Iceberg (Submatrices) on the map (Matrix)
+					System.out.println("Iceberg " + icebergs[i].getName() +  " is generated!");
+				}
+			}
+			
 		}
 
 }
