@@ -11,7 +11,7 @@ public class Eskimo extends Figure{
 	{
 		// Logic: build igloo
 		Igloo ig= new Igloo();
-		if (ig.isUsed()==true)
+		if (ig.used==true)
 			System.out.println("You Cannot Use the Skill");
 		
 		//logic to build the igloo ( position on the map )
