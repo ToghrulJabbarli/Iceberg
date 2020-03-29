@@ -14,7 +14,7 @@ public class Map extends Matrix{
 		private List<Snow> snowList;
 		
 		// List of players 
-		static List<Player> players;
+		static List<Player> players=new ArrayList<Player>();
 		
 		// Number of players on the map = size of players
 		private Integer numberOfPlayers;
@@ -22,7 +22,7 @@ public class Map extends Matrix{
 		
 		
 		
-		public Map(int height, int width,List<Player> players)
+		public Map(int height, int width,List<Player> _players)
 		{
 			super(height,width);
 			
@@ -30,7 +30,7 @@ public class Map extends Matrix{
 			Map = new Cell[height][width];
 			
 			// Setting up the players on the map
-			players = new ArrayList<Player>();
+			players = _players;
 			
 			System.out.print("Map and Players are set!");
 		}
