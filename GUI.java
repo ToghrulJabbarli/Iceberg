@@ -126,11 +126,6 @@ public class GUI {
 			
 		}
 		
-		public void DrawMap()//Added by Murad & Toghrul
-		{
-			// Logic: ......
-		}
-		
 		
 		
 		
