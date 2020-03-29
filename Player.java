@@ -1,5 +1,6 @@
 package Icefield;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -9,7 +10,7 @@ public class Player{
 	private static int ID;
 	private int Player_ID;
 	
-	public List<Figure> figures;
+	public List<Figure> figures=new ArrayList<Figure>();
 	
 	public Player(String Name)
 	{
