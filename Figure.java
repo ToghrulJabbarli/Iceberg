@@ -146,6 +146,7 @@ public class Figure extends Object{
 	{
 		// Logic: Collect an Item on the cell
 		//Ashraf: I added this part since I need to collect the items
+		
 		System.out.println("Item Received");
 	}
 	
