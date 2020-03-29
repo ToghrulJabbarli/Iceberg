@@ -34,7 +34,7 @@ public abstract class Object {
 		//These two lines below makes the link between this instance and the owner's pocket (items list)
 		//implementation shall be completed in figure class
 		ob.owner = figure;
-	  //ob.owner.CollectItem();
+	  //ob.owner.AddItem();
 		ob.used = true;
 	}
 
