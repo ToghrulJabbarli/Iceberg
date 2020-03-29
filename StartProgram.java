@@ -1,11 +1,11 @@
-package Icefield;
+package iceberg;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StartProgram {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Throwable {
 		
 		// TODO Auto-generated method stub
 		/**
@@ -72,8 +72,8 @@ public class StartProgram {
 	//Comment the previous part before starting here as this part is different separate scenarios that would be integrated later to make the sense of game.
 	//	-------------------------------------------------------------------------------------------------------------------------------
 	// During Testing, please test each object separately since each object represents a single separate scenario that only one can happen per MOVE
-		Figure figure1 = new Figure("Ashraf", 5, 2,4);
-		Figure figure2 = new Figure("Murad", 4,2 ,5);
+		//Figure figure1 = new Figure("Ashraf", 5, 2,4);
+		//Figure figure2 = new Figure("Murad", 4,2 ,5);
 		
 		/*
 		Charge charge1 = new Charge();
@@ -106,31 +106,56 @@ public class StartProgram {
 		Snow snow1 = new Snow(3,4 ,3);
 		snow1.BuildingSnow();*/
                
-		/*
+		
 		//Achref Testing Part : 
-		//Testing Explorer and Eskimo
+		
+		//Testing Eskimo + Explorer :
+		List<Player> players = new ArrayList<Player>();
+		Player player_1 = new Player("Murad");
+		
+		Map map = new Map(25,25,players);
+		Rope rp = new Rope();
 		String name1;
-		Explorer ex = new Explorer();
-		ex.Skill_use();
+		Iceberg ic1= new Iceberg(20,15,10,map);
+		Explorer ex = new Explorer("Achref",10,4,3);
+		ex.Skill_Use(ic1);
 		name1 = ex.getName();
 		System.out.println(name1);
-		ex.getCellsName(10 , 15);
 		
-		Eskimo es = new Eskimo();
-		es.Skill_use();
-	        es.CollectItem();
-		es.FallIntoWater();
-		es.removeSnow();
+		// when a Figure Falls into water :
+		Eskimo es = new Eskimo("Ali",10,4,3);
+		es.Skill_Use();
+	    es.CollectItem(rp); 	
+		es.FallIntoWater(es);
 		
 		//Testing Game engine
-		GameEngine ge = new GameEngine();
-		ge.setWinner();
+		GameEngine ge = new GameEngine(map);
+		if(ex.getHealth()>0 & es.getHealth()>0)
+			ge.setWinner(player_1);
 		
-		//Testing player
+		// when Health goes 0 :
+		for (int i=0;i<10;i++)
+			es.DecrementHealth();
 		
-		Player p1 = new Player("Achref");
-		int x ;
-		x = Player.getRandomIDInRange(200, 999)*/
+		
+			es.checkHealth();
+		
+		// Removing Snow :
+		Shovel sh = new Shovel();
+		Snow sn = new Snow(5,4,25);
+		es.addItem(sh);
+		sn.BuildingSnow();
+		es.removeSnow(sn,10);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
