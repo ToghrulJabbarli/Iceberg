@@ -105,8 +105,32 @@ public class StartProgram {
 		
 		Snow snow1 = new Snow(3,4 ,3);
 		snow1.BuildingSnow();*/
-	
+               
+		/*
+		//Achref Testing Part : 
+		//Testing Explorer and Eskimo
+		String name1;
+		Explorer ex = new Explorer();
+		ex.Skill_use();
+		name1 = ex.getName();
+		System.out.println(name1);
+		ex.getCellsName(10 , 15);
 		
+		Eskimo es = new Eskimo();
+		es.Skill_use();
+	        es.CollectItem();
+		es.FallIntoWater();
+		es.removeSnow();
+		
+		//Testing Game engine
+		GameEngine ge = new GameEngine();
+		ge.setWinner();
+		
+		//Testing player
+		
+		Player p1 = new Player("Achref");
+		int x ;
+		x = Player.getRandomIDInRange(200, 999)*/
 	}
 
 }
