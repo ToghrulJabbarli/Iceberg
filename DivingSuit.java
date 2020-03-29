@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class DivingSuit extends Object{
 	
+	//all instances of this object will be the same name
+
 	public DivingSuit() {
 		this.Name = "Diving Suit";
 	}
