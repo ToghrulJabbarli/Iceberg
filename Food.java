@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Food extends Object {
 
+	//all instances of this object will be the same name
+
 	public Food() {
 		this.Name = "Food";
 	}
@@ -18,7 +20,7 @@ public void Use() {
 	char ch = sc.next().charAt(0);
 	
 	System.out.println("Food is used and your health is now"+ owner.getHealth());
-	//This function is not working properly, Achref's part
+	//This function is to be implemented with more details later based on the requirements
 	owner.EatFood();
 
 	}
