@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Shovel extends Object{
 
+	//all instances of this object will be the same name
+
 	public Shovel() {
 		this.Name = "Shovel";
 	}
