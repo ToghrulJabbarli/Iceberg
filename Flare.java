@@ -1,20 +1,13 @@
 package Icefield;
 
+import java.util.Scanner;
+
 public class Flare extends Object {
 	
-	@Override
-	public void Used() {
-		used = true;
-		System.out.println("Flare was taken!");
+	public Flare() {
+		this.Name = "Flare";
 	}
-	@Override
-	public boolean isUsed() {
-		// Logic: Checks whether flare is used or not
-		
-		return used;
-	}
-	
-	
+
 	
 
 }
