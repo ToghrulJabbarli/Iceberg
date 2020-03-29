@@ -7,8 +7,14 @@ public class StartProgram {
 
 	public static void main(String[] args) {
 		
-		// Called by Yifang
 		// TODO Auto-generated method stub
+		/**
+		 * Yifang Meng test part
+		 * Testers press 'A' once ice field is loaded, at this moment it looks like many green grids
+		 * Then tester input name and click "Enter" button, Setting window is shown in which tester can choose figures to control
+		 * Once figure is chosen, click "Done" button then another player can join and repeat above steps
+		 * If all players are set, tester can click "Start" button then MainMenu and Setting windows disappear and game starts
+		 */
 		GUI gui=new GUI(GUI.HEIGHT, GUI.WIDTH);
 		System.out.println("Welcome to Iceberg!");
 		System.out.println("Press 'A' to add Player");
@@ -22,11 +28,10 @@ public class StartProgram {
 		Player player_2 = new Player("Toghrul");
 		players.add(player_1);
 		players.add(player_2);
-		
+		Map.players.addAll(players);
 		
 		
 		Map map = new Map(25,25,players);
-		map.showOnGUI(gui, map);
 		for(int i = 0; i < players.size(); i++)
 		{
 			System.out.println("Player " + i + ": ID: " + players.get(i).getID() + ", Name: " + players.get(i).getName());
@@ -59,6 +64,7 @@ public class StartProgram {
 		Blizzard blizzard = new Blizzard(i_1);
 		blizzard.StartBlizzard();
 		blizzard.StopBlizzard();
+		System.out.println("\n");
 		
 		
 	}
