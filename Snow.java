@@ -15,22 +15,23 @@ public class Snow extends Object {
 		this.x = x;
 		this.y = y;
 		this.level = level;
+		this.Name = "Snow";
 	}
 
-	@Override
-	public void Used() {
+	
+	public void BuildingSnow() {
 		String crd = "(" + x + "," + y + ")";
 		System.out.print("Snow was set up on the " + crd);
 		
 	}
 
-	@Override
+	
 	public boolean isUsed() {
 		// Logic: Check whether snow was set up or not
 		if(this.level>0)
 		{
 			//for printing only
-			this.Used();
+			this.BuildingSnow();
 			return true;
 		}
 		return false;
