@@ -1,24 +1,25 @@
 package Icefield;
 
+import java.util.Scanner;
+
 public class Food extends Object {
 
-	@Override
-	public void Used() {
-		System.out.println("Food was taken!");
-		used = true;
-	}
-	@Override
-	public boolean isUsed() {
-		// Logic: Checks whether food is used or not
-		return used;
+	public Food() {
+		this.Name = "Food";
 	}
 	
 public void Use() {
 		
 		// Logic
-	if(used)
-		owner.EatFood();
-	System.out.println("Food is used and your health is now"+ owner.get_health());
+
+	System.out.println("Do you want to use it? Press any key to confirm");
+	
+	Scanner sc = new Scanner(System.in);
+	char ch = sc.next().charAt(0);
+	
+	System.out.println("Food is used and your health is now"+ owner.getHealth());
+	//This function is not working properly, Achref's part
+	owner.EatFood();
 
 	}
 }
