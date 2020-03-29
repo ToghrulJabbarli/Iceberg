@@ -20,13 +20,7 @@ public class Map extends Matrix{
 		private Integer numberOfPlayers;
 		
 		
-		public void showOnGUI(GUI gui, Map map)
-		{
-			// Logic: show this object in GUI
-		   gui.SetMap(map);
-		   System.out.print("Map is set in the GUI! \n");
-			
-		}
+		
 		
 		public Map(int height, int width,List<Player> players)
 		{
