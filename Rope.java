@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Rope extends Object{
 
+	//all instances of this object will be the same name
+
 	public Rope() {
 		this.Name = "Rope";
 	}
