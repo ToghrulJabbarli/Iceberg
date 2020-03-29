@@ -21,10 +21,10 @@ public class Snow extends Object {
 	
 	public void BuildingSnow() {
 		String crd = "(" + x + "," + y + ")";
-		System.out.print("Snow was set up on the " + crd);
+		System.out.println("Snow was set up on the " + crd);
 		
 	}
-
+    
 	
 	public boolean isUsed() {
 		// Logic: Check whether snow was set up or not
