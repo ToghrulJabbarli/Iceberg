@@ -1,27 +1,22 @@
 package Icefield;
 
+import java.util.Scanner;
+
 public class Rope extends Object{
 
-	@Override
-	public void Used() {
-		System.out.println("Rope was taken! ");
-		used = true;
+	public Rope() {
+		this.Name = "Rope";
 	}
-
-	@Override
-	public boolean isUsed() {
-		
-		// Logic: Checks whether flare is used or not
-		
-		return used;
-	}
-
 	
-	public void Use(Figure rescuing_figure) {
+	public void Use(Figure rescued_figure) {
 		
-		if(owner.used)
-			rescuing_figure.Move(0,0);
-		System.out.println("The figure has been rescued successfully !");
+		System.out.println("Do you want to use it? Press any key to confirm");
+		
+		Scanner sc = new Scanner(System.in);
+		char ch = sc.next().charAt(0);
+		
+		System.out.println(rescued_figure.getName() + "has been rescued successfully !");
+		rescued_figure.Move(0,0);
 		
 	}
 	
