@@ -1,5 +1,6 @@
-package Icefield;
+package iceberg;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Figure extends Object{
@@ -18,7 +19,7 @@ public class Figure extends Object{
 	private List<String> Skills;
 	private int SkillsCount;
 	
-	private List<Object> Items;
+	private List<Object> Items=new ArrayList<Object>();
 	private int ItemsCount;
 	
 	public Figure(String Name,int Health,int SkillsCount, int ItemsCount)
@@ -117,15 +118,40 @@ public class Figure extends Object{
 		return true;
 	}
 	
-	public void FallIntoWater()
+	// Achref : i added figure parameter because we need a specific figure to fall into water 
+	// added throwable exception because i will destroy the object if he dies 
+	public void FallIntoWater(Figure fig)throws Throwable
 	{
 		// Logic: Fall into the water
+		try {
+		Rope rp = new Rope();
+		DivingSuit ds = new DivingSuit();
 		System.out.println("You Fell into Water : Use a Diving Suit or a Rope to Save yourself ");
+		for( int i=0 ;i<Items.size();i++) {
+			if (Items.get(i).Name== rp.Name ) {
+				rp.Use(fig);
+				System.out.println("Saved");}
+			
+			else if (Items.get(i).Name==ds.Name) {
+				ds.Use();
+				System.out.println("Saved");}
+			else
+				fig.Die();
+			   System.out.println("Saved");}}
+				
+		catch(NullPointerException e) {
+			System.out.println("errrrorrr");
+		}
+				
+		
 	}
 	
-	public boolean HasAShowel()
+	public boolean HasAShovel()
 	{
 		// Logic: Checks whether player has a shovel or not
+		for( int i=0 ;i<Items.size();i++) {
+			if (Items.get(i).Name == "Shovel")
+		        break;}
 		return true;
 	}
 	
@@ -134,6 +160,13 @@ public class Figure extends Object{
 	public void Object_Use(Object obj)
 	{
 		// Logic: Use a particular object
+		
+		for( int i=0 ;i<Items.size();i++) {
+			if (Items.get(i).Name == obj.Name)
+				removeItem(i); }
+		
+		DecrementItems();
+		System.out.println("this "+obj.Name +" has been used");
 	}
 	
 	public void Skill_Use()
@@ -141,10 +174,18 @@ public class Figure extends Object{
 		// Logic: Use a particular skill
 		moveCount--;
 	}
-	public void CollectItem()
+    //There should be a parameter here of the item collected and then some logic to add it to the Items list
+	//i added a parameter Object it1
+	public void CollectItem(Object it1)throws NullPointerException
 	{
-		// Logic: Print to the screen the result of AddItem method		
-		System.out.println("Item Received");
+		// Logic: Collect an Item on the cell
+		try {
+		this.addItem(it1);
+		this.IncrementsItems();
+		System.out.println("Item Received");}
+		catch(NullPointerException e) {
+			System.out.println("errrrorrr");
+		}
 	}
 	
 	public boolean search_for_item(Object ob)
@@ -158,11 +199,21 @@ public class Figure extends Object{
 	{
 		return this.Name;
 	}
-	
-	public void removeSnow()
+	//Achref : i ADDED  2 parameters because it needs to receive the specific snow and the lvl to be reduced 
+	public void removeSnow(Snow sn,int redlvl)
 	{
 		// Logic: Remove snow level based on some logic e.g. if E a snow level > 0 and
 		// you have a shovel
+		
+		for( int i=0 ;i<Items.size();i++) {
+			if (this.HasAShovel()) {
+				if(sn.level>0)
+				{
+					sn.level=sn.level-redlvl;
+					sn.BuildingSnow();
+				}}}
+					
+			
 		System.out.println("Snow Removed");
 	}
 
@@ -193,20 +244,20 @@ public class Figure extends Object{
 	}
 	
 	// Checks the health of the figure in every frame
-	public void checkHealth()
+	public void checkHealth() throws Throwable
 	{
 		if(this.Health == 0)
 		{
-			System.out.print("Figure (" + this.Name + ")"+
-		" died!");
+			System.out.println("Figure (" + this.Name + ")"+
+					" died!");
 			this.Die();
 		}
 	}
 	
-	public void Die()
+	public void Die() throws Throwable
 	{
 		// Logic: Destroy the object
-		System.out.println("This Figure Died ");
+		finalize();
 	}
 	//In the previous model, this function was overriden by the abstract class but I "Ashraf" have removed overriding since there is no need for it
 	//It can be a separate function here. Same for isUsed below
