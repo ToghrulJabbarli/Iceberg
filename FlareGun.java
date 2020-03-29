@@ -15,20 +15,7 @@ public class FlareGun extends Object {
 	public boolean flaresAreCollected;
 	
 
-	@Override
-	public boolean isUsed() {
-		
-		// Logic: Checks whether gun is used or not
-		
-		return false;
-	}
 
-	@Override
-	public void Used() {
-		// TODO Auto-generated method stub
-		System.out.print("FlareGun was taken");
-	}
-	
 	public boolean canShoot()
 	{
 		// Logic: Checks whether gun can shoot or not
@@ -52,7 +39,7 @@ public class FlareGun extends Object {
 		}
 	}
 	
-	public void Shoot()
+	public void Shoot(Player player)
 	{
 		int count=0;
 		// Logic: Shooting logic
@@ -69,10 +56,10 @@ public class FlareGun extends Object {
 					count++;
 			}
 			
-			if(count == owner_player.figures.size())
+			if(count == owner_player.figures.size()) 
 			{
 				System.out.println("Gun is Fired, You won");
-				GameEngine.setWinner(this.owner_player);
+				GameEngine.setWinner(player);
 			}
 			
 		}
@@ -81,4 +68,3 @@ public class FlareGun extends Object {
 	
 
 }
-
