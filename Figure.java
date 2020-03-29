@@ -141,12 +141,9 @@ public class Figure extends Object{
 		// Logic: Use a particular skill
 		moveCount--;
 	}
-//There should be a parameter here of the item collected and then some logic to add it to the Items list
 	public void CollectItem()
 	{
-		// Logic: Collect an Item on the cell
-		//Ashraf: I added this part since I need to collect the items
-		
+		// Logic: Print to the screen the result of AddItem method		
 		System.out.println("Item Received");
 	}
 	
