@@ -10,6 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/**
+ * Window for each player to choose figures they want to control
+ * @author Yifang Meng
+ *
+ */
 public class Settings {
 	JFrame jf =new JFrame("Choose Figures");
 	JButton eskimoButton=new JButton("+");
@@ -66,7 +71,10 @@ public class Settings {
 		});
 		
 	}
-	
+	/**
+	 * update figures list of current player
+	 * @param figure Receive a figure instance to add to the figures-list current player controls
+	 */
 	public static void UpdateFigures(Figure figure) {
 		int numPlayers=Map.players.size();
 		if (numPlayers==0) {
@@ -76,7 +84,9 @@ public class Settings {
 			Map.players.get(numPlayers-1).figures.add(figure);
 		}
 	}
-	
+	/**
+	 * Window initialization
+	 */
 	public void ChooseFigures() {
 		
 		jf.setVisible(true);
