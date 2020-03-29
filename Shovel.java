@@ -1,23 +1,21 @@
 package Icefield;
 
+import java.util.Scanner;
+
 public class Shovel extends Object{
 
-	@Override
-	public void Used() {
-	System.out.println("Shovel was used!");
-		used = true;
+	public Shovel() {
+		this.Name = "Shovel";
 	}
-
-	@Override
-	public boolean isUsed() {
-	// Logic: Checks whether shovel is used or not
-		return used;
-	}
-
+	
 	public void Use() {
 	
-		if(this.used)
-			owner.removeSnow();
+		System.out.println("Do you want to use it? Press any key to confirm");
+		
+		Scanner sc = new Scanner(System.in);
+		char ch = sc.next().charAt(0);
+		
+		owner.removeSnow();
 		//there should be a printing in the function body in figure to state what happened
 	}
 
