@@ -10,9 +10,9 @@ public class Figure extends Object{
 	// Total count of the move possibilities
 	private Integer moveCount;
 	
-	
+	//Ashraf: Generated Getters and Setters
 	private String Name;
-	
+	//Ashraf: Generated Getters and Setters
 	private int Health;
 	
 	private List<String> Skills;
@@ -85,11 +85,11 @@ public class Figure extends Object{
 	{
 		ItemsCount--;
 	}
-	
-	private void Move(int x, int y)
+	//I need this function to be public since I will be calling it
+	public void Move(int x, int y)
 	{
 		// Logic: Move Figure to the cell with x and y coordinates
-		System.out.printf("you are at X =  : ",x," , Y = ",y);
+		System.out.println("you are at X =  : "+ x + " , Y = "+ y);
 		
 	}
 	
@@ -141,11 +141,19 @@ public class Figure extends Object{
 		// Logic: Use a particular skill
 		moveCount--;
 	}
-	
+//There should be a parameter here of the item collected and then some logic to add it to the Items list
 	public void CollectItem()
 	{
 		// Logic: Collect an Item on the cell
+		//Ashraf: I added this part since I need to collect the items
 		System.out.println("Item Received");
+	}
+	
+	public boolean search_for_item(Object ob)
+	{
+		if(Items.contains(ob))
+			return true;
+		return false;
 	}
 	
 	public String getName()
@@ -202,17 +210,30 @@ public class Figure extends Object{
 		// Logic: Destroy the object
 		System.out.println("This Figure Died ");
 	}
-	@Override
+	//In the previous model, this function was overriden by the abstract class but I "Ashraf" have removed overriding since there is no need for it
+	//It can be a separate function here. Same for isUsed below
 	public void Used() {
 		
 		System.out.println("Figure is moved!");
 		
 	}
 
-	@Override
+	
 	public boolean isUsed() {
 		// Logic: Check whether Figure is moved or not
 		return false;
+	}
+
+	public int getHealth() {
+		return Health;
+	}
+
+	public void setHealth(int health) {
+		Health = health;
+	}
+
+	public void setName(String name) {
+		Name = name;
 	}
 
 	
