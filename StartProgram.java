@@ -19,7 +19,19 @@ public class StartProgram {
 		System.out.println("Press 'A' to add Player");
 		gui.ShowGUI();
 	}
+	
+	/*To Test My Scenarios , you have to use the Numeric keypad:
+            in case you pressed 1 , you will see the remove Snow scenario
+            in case you pressed 2, you will see the Explorer use skill scenario
+            in case you pressed 3, you will see the Eskimo use skill scenario
+            in case you pressed 4, you will see the GameEngine testing
+            in case you pressed 5, you will see a HealthManagement scenario
+            in case you pressed 6, you will see a FallintoWater Scenario
+	    @author Achref Mekni
+	    */
+
 	//Snow Removing Scenario :
+	 @author Achref Mekni
 	public static void Snow_removing(Figure es) 
 	{
 		Shovel sh = new Shovel();
@@ -29,6 +41,7 @@ public class StartProgram {
 		es.removeSnow(sn);
 	}
        // HealthManag Scenario :
+	 @author Achref Mekni
 	public static void HealthManag(Figure es) throws Throwable
 	{
 		for (int i=0;i<10;i++)
@@ -37,6 +50,7 @@ public class StartProgram {
 		es.checkHealth();
 	}
 	// Falls into Water Scenario :
+	 @author Achref Mekni
 	public static void Falls_intoWater(Figure es) throws Throwable
 	{
 		Rope rp = new Rope();
@@ -45,18 +59,21 @@ public class StartProgram {
 		es.FallIntoWater(es);
 	}
    // Explorer Use skill :
+	 @author Achref Mekni
     public static void 	Explorer_UseSkill(Explorer ex, Map map1)
     {
     	Iceberg ic1= new Iceberg(20,15,10,map1);
 		ex.Skill_Use(ic1);
     }
     // Explorer use skill :
+	 @author Achref Mekni
     public static void Eskimo_UseSkill(Eskimo es )
     {
     	es.Skill_Use();
     }
     
 	// GameEngine Testing :
+	 @author Achref Mekni
     public static void GameEngine_Test(GameEngine ge,Figure es,Figure ex,Player p)
     {
     	
@@ -66,6 +83,7 @@ public class StartProgram {
 	
 	// Achref : All my Test in  a function :
 	// use numeric Keypad to test each one seperately :
+	 @author Achref Mekni
 	public static void Achref_Test() throws Throwable 
 	{
 		List<Player> playerss = new ArrayList<Player>();
