@@ -1,3 +1,7 @@
+/* a Class that controls the Game status 
+@author Achrefmekni
+*/
+
 package Icefield;
 
 public class GameEngine {
