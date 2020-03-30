@@ -19,15 +19,54 @@ public class StartProgram {
 		System.out.println("Press 'A' to add Player");
 		gui.ShowGUI();
 	}
-	/**
-	   *Ashraf Weheash Testing part
-	   *This is to test all the objects of the game like Charge, Flare, etc.
-	   *There are two different scenarios during the whole game
-	   	-1- A figure uses the object for himself like Charge, food, DivingSuit, Igloo. So I used the main
-			-So I used the main Figure -> figure1
-		-2- A figure uses the object on onther figure. So, I used figure1 as main figure and figure2 as second role
-			-like in a rope, figure1 will use it on figure2 to save it and figure2 will be given as a parameter in the Use()
-			function of figure1. Setting this parameter will be defined on GUI. 
+
+	public static void MuradandToghrulTest() {
+		System.out.println(" --------------------MURAD & TOGHRUL------------------- \n");
+		
+		
+		List<Player> players = new ArrayList<Player>();
+		Player player_1 = new Player("Murad");
+		Player player_2 = new Player("Toghrul");
+		players.add(player_1);
+		players.add(player_2);
+		
+		
+		Map map = new Map(25,25,players);
+		for(int i = 0; i < players.size(); i++)
+		{
+			System.out.println("Player " + i + ": ID: " + players.get(i).getID() + ", Name: " + players.get(i).getName());
+		}
+		
+		
+		
+		// Iceberg
+		Iceberg i_1 = new Iceberg(5,5,10,map);
+		System.out.println("Iceberg is fittable: " + i_1.isFittable());
+		System.out.println("Iceberg name: " + i_1.getName());
+		i_1.Fit(map);
+		
+		System.out.print("\n\n");
+		
+		Iceberg i_2 = new Iceberg(5,5,10,map);
+		System.out.println("Iceberg is fittable: " + i_2.isFittable());
+		System.out.println("Iceberg name: " + i_2.getName());
+		i_2.Fit(map);
+		
+		Iceberg[] icebergs = new Iceberg[2];
+		icebergs[0] = i_1;
+		icebergs[1] = i_2;
+		
+		
+		map.SetIcebergs(icebergs);
+		map.GenerateIcebergsOnMap();
+		
+		// Blizzard
+		Blizzard blizzard = new Blizzard(i_1);
+		blizzard.StartBlizzard();
+		blizzard.StopBlizzard();
+		
+	}
+	
 	public static void AshrafTest()
 	{
 		Figure figure1 = new Figure("Ashraf", 5, 2,4);
@@ -64,56 +103,6 @@ public class StartProgram {
 		Snow snow1 = new Snow(3,4 ,3);
 		snow1.BuildingSnow();
 		
-	}
-
-	public static void MuradandToghrulTest() {
-		System.out.println(" --------------------MURAD & TOGHRUL------------------- \n");
-		
-		
-		List<Player> players = new ArrayList<Player>();
-		Player player_1 = new Player("Murad");
-		Player player_2 = new Player("Toghrul");
-		players.add(player_1);
-		players.add(player_2);
-		
-		GUI gui=new GUI(GUI.HEIGHT, GUI.WIDTH);
-		
-		Map map = new Map(25,25,players);
-		map.showOnGUI(gui, map);
-		for(int i = 0; i < players.size(); i++)
-		{
-			System.out.println("Player " + i + ": ID: " + players.get(i).getID() + ", Name: " + players.get(i).getName());
-		}
-		
-		
-		
-		// Iceberg
-		Iceberg i_1 = new Iceberg(5,5,10,map);
-		System.out.println("Iceberg is fittable: " + i_1.isFittable());
-		System.out.println("Iceberg name: " + i_1.getName());
-		i_1.Fit(map);
-		
-		System.out.print("\n\n");
-		
-		Iceberg i_2 = new Iceberg(5,5,10,map);
-		System.out.println("Iceberg is fittable: " + i_2.isFittable());
-		System.out.println("Iceberg name: " + i_2.getName());
-		i_2.Fit(map);
-		
-		Iceberg[] icebergs = new Iceberg[2];
-		icebergs[0] = i_1;
-		icebergs[1] = i_2;
-		
-		
-		map.SetIcebergs(icebergs);
-		map.GenerateIcebergsOnMap();
-		
-		// Blizzard
-		Blizzard blizzard = new Blizzard(i_1);
-		blizzard.StartBlizzard();
-		blizzard.StopBlizzard();
-		
-	}
 	
 	
 	public static void main(String[] args) throws Throwable {
@@ -123,29 +112,26 @@ public class StartProgram {
 		System.out.println("1: Murad and Togrul");
 		System.out.println("2: Ashraf");
 		System.out.println("3: Achref");
-		System.out.println("4: Yifang");
+		System.out.println("4: Yifang---GUI");
+		System.out.println("If you want to test GUI, test it first. Then restart program and test others...");
 		while(true) {
 			Scanner input=new Scanner(System.in);
 			String result=input.next();
 			int choice=Integer.valueOf(result);
-			switch (choice) {
-			case 1:
+			if (choice==1) {
 				MuradandToghrulTest();
-				break;
-			case 2:
-				AshrafTest();
-				break;
-			case 3:
-				break;
-			case 4:
-				YifangTest();
-				break;
-					
-
-			default:
+			}
+			if (choice==2) {
+				MuradandToghrulTest();
+			}
+			if (choice==3) {
+				MuradandToghrulTest();
+			}
+			if (choice==4) {
 				break;
 			}
 		}
+		YifangTest();
 	}
 
 }
