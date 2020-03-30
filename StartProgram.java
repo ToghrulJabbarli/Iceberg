@@ -19,105 +19,14 @@ public class StartProgram {
 		System.out.println("Press 'A' to add Player");
 		gui.ShowGUI();
 	}
-	
-	/*To Test My Scenarios , you have to use the Numeric keypad:
-            in case you pressed 1 , you will see the remove Snow scenario
-            in case you pressed 2, you will see the Explorer use skill scenario
-            in case you pressed 3, you will see the Eskimo use skill scenario
-            in case you pressed 4, you will see the GameEngine testing
-            in case you pressed 5, you will see a HealthManagement scenario
-            in case you pressed 6, you will see a FallintoWater Scenario
-	    @author Achref Mekni
-	    */
 
-	//Snow Removing Scenario :
-	 @author Achref Mekni
-	public static void Snow_removing(Figure es) 
-	{
-		Shovel sh = new Shovel();
-		Snow sn = new Snow(5,4,25);
-		es.addItem(sh);
-		sn.BuildingSnow();
-		es.removeSnow(sn);
-	}
-       // HealthManag Scenario :
-	 @author Achref Mekni
-	public static void HealthManag(Figure es) throws Throwable
-	{
-		for (int i=0;i<10;i++)
-			es.DecrementHealth();
-		 
-		es.checkHealth();
-	}
-	// Falls into Water Scenario :
-	 @author Achref Mekni
-	public static void Falls_intoWater(Figure es) throws Throwable
-	{
-		Rope rp = new Rope();
-		
-	    es.CollectItem(rp); 	
-		es.FallIntoWater(es);
-	}
-   // Explorer Use skill :
-	 @author Achref Mekni
-    public static void 	Explorer_UseSkill(Explorer ex, Map map1)
-    {
-    	Iceberg ic1= new Iceberg(20,15,10,map1);
-		ex.Skill_Use(ic1);
-    }
-    // Explorer use skill :
-	 @author Achref Mekni
-    public static void Eskimo_UseSkill(Eskimo es )
-    {
-    	es.Skill_Use();
-    }
-    
-	// GameEngine Testing :
-	 @author Achref Mekni
-    public static void GameEngine_Test(GameEngine ge,Figure es,Figure ex,Player p)
-    {
-    	
-		if(ex.getHealth()>0 & es.getHealth()>0)
-			ge.setWinner(p);
-    }
-	
-	// Achref : All my Test in  a function :
-	// use numeric Keypad to test each one seperately :
-	 @author Achref Mekni
-	public static void Achref_Test() throws Throwable 
-	{
-		List<Player> playerss = new ArrayList<Player>();
-		Player player_3 = new Player("Murad");
-		Map map1 = new Map(25,25,playerss);
-		Eskimo es = new Eskimo("Ali",10,4,3);
-		Explorer ex = new Explorer("Achref",10,4,3);
-		GameEngine ge = new GameEngine(map1);
-		while(true) {
-			Scanner input=new Scanner(System.in);
-			String result=input.next();
-			int choice=Integer.valueOf(result);
-			
-		
-		switch(choice) {
-			case 1: Snow_removing(es);
-			break;
-			case 2: Explorer_UseSkill(ex,map1);
-			break;
-			case 3: Eskimo_UseSkill(es);
-			break;
-			case 4: GameEngine_Test(ge,es,ex,player_3);
-			break;
-			case 5: HealthManag(es);
-			break;
-			case 6: Falls_intoWater(es);
-			break;
-		}
-		}
-		
-		
-		
-	}
-
+	/**
+	 * It will create two players manually and add them to players list
+	 * Icebergs will be created manually as well
+	 * In later versions, we will use algorithm to implement it
+	 * In ths test case, it will check whether current iceberg is fittable or not
+	 * @author Murad and Togrul
+	 */
 	public static void MuradandToghrulTest() {
 		System.out.println(" --------------------MURAD & TOGHRUL------------------- \n");
 		
@@ -164,7 +73,13 @@ public class StartProgram {
 		blizzard.StopBlizzard();
 		
 	}
-	
+	/**
+	 * @author Ashraf
+	 * This test is used to check created objects and how they will be used by figures
+	 * You will find, retrieve and use the objects during game
+	 * You can input the your cjoice by pressing any keys
+	 * then the game will run automatically.
+	 */
 	public static void AshrafTest()
 	{
 		Figure figure1 = new Figure("Ashraf", 5, 2,4);
@@ -201,9 +116,97 @@ public class StartProgram {
 		shovel1.Used(shovel1, figure1);
 		shovel1.Use(snow1);
 		
+	}
 		
-		
+	public static void Snow_removing(Figure es) 
+	{
+		Shovel sh = new Shovel();
+		Snow sn = new Snow(5,4,25);
+		es.addItem(sh);
+		sn.BuildingSnow();
+		es.removeSnow(sn);
+	}
+    
+	public static void HealthManag(Figure es) throws Throwable
+	{
+		for (int i=0;i<10;i++)
+			es.DecrementHealth();
+		 
+		es.checkHealth();
+	}
 	
+	public static void Falls_intoWater(Figure es) throws Throwable
+	{
+		Rope rp = new Rope();
+		
+	    es.CollectItem(rp); 	
+		es.FallIntoWater(es);
+	}
+
+    public static void 	Explorer_UseSkill(Explorer ex, Map map1)
+    {
+    	Iceberg ic1= new Iceberg(20,15,10,map1);
+		ex.Skill_Use(ic1);
+    }
+    
+    public static void Eskimo_UseSkill(Eskimo es )
+    {
+    	es.Skill_Use();
+    }
+    
+    public static void GameEngine_Test(GameEngine ge,Figure es,Figure ex,Player p)
+    {
+    	
+		if(ex.getHealth()>0 & es.getHealth()>0)
+			ge.setWinner(p);
+    }
+    /**
+     * This test case is used for checking some functions of Figures
+     * Figures can remove snow generally
+     * Eskimos can build igloo
+     * Explorer can check the capacity of neighboring iceberg
+     * in case you pressed 1 , you will see the remove Snow scenario
+       in case you pressed 2, you will see the Explorer use skill scenario
+       in case you pressed 3, you will see the Eskimo use skill scenario
+       in case you pressed 4, you will see the GameEngine testing
+       in case you pressed 5, you will see a HealthManagement scenario
+       in case you pressed 6, you will see a FallintoWater Scenario
+     * @throws Throwable
+     * @author Achref
+     */
+	public static void Achref_Test() throws Throwable 
+	{
+		List<Player> playerss = new ArrayList<Player>();
+		Player player_3 = new Player("Murad");
+		Map map1 = new Map(25,25,playerss);
+		Eskimo es = new Eskimo("Ali",10,4,3);
+		Explorer ex = new Explorer("Achref",10,4,3);
+		GameEngine ge = new GameEngine(map1);
+		while(true) {
+			Scanner input=new Scanner(System.in);
+			String result=input.next();
+			int choice=Integer.valueOf(result);
+			
+		
+		switch(choice) {
+			case 1: Snow_removing(es);
+			break;
+			case 2: Explorer_UseSkill(ex,map1);
+			break;
+			case 3: Eskimo_UseSkill(es);
+			break;
+			case 4: GameEngine_Test(ge,es,ex,player_3);
+			break;
+			case 5: HealthManag(es);
+			break;
+			case 6: Falls_intoWater(es);
+			break;
+		}
+		}
+		
+		
+		
+	}
 	
 	public static void main(String[] args) throws Throwable {
 		
@@ -213,7 +216,7 @@ public class StartProgram {
 		System.out.println("2: Ashraf");
 		System.out.println("3: Achref");
 		System.out.println("4: Yifang---GUI");
-		System.out.println("If you want to test GUI, test it first. Then restart program and test others...");
+		System.out.println("If you want to test different cases, test one by one. Then restart program and test others...");
 		while(true) {
 			Scanner input=new Scanner(System.in);
 			String result=input.next();
