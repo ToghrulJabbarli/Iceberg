@@ -96,12 +96,14 @@ public class StartProgram {
 		rope1.Used(rope1, figure1);
 		rope1.Use(figure2);
 		
-		Shovel shovel1 = new Shovel();
-		shovel1.Used(shovel1, figure1);
-		shovel1.Use();
-		
 		Snow snow1 = new Snow(3,4 ,3);
 		snow1.BuildingSnow();
+		
+		Shovel shovel1 = new Shovel();
+		shovel1.Used(shovel1, figure1);
+		shovel1.Use(snow1);
+		
+		
 		
 	
 	
