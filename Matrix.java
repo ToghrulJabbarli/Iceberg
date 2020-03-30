@@ -8,7 +8,11 @@ public class Matrix {
 	
 	protected int height;
 	protected int width;
-	
+	/**
+	 * 
+	 * @param height 
+	 * @param width
+	*/
 	
 	public Matrix(int height, int width)
 	{
