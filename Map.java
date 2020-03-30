@@ -1,3 +1,7 @@
+/**
+ * Main Matrix class
+ * @author Murad Shahsuvarov & Toghrul Jabbarli
+ */
 package Icefield;
 
 import java.util.ArrayList;
