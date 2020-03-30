@@ -1,3 +1,7 @@
+/* a Class that has Figures Methods
+@author Achrefmekni
+*/
+
 package Icefield;
 
 import java.util.ArrayList;
