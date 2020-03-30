@@ -19,9 +19,9 @@ public void Use() {
 	Scanner sc = new Scanner(System.in);
 	char ch = sc.next().charAt(0);
 	
-	System.out.println("Food is used and your health is now"+ owner.getHealth());
+	System.out.println("Food is used and your health is now"+ (owner.getHealth()+1));
 	//This function is to be implemented with more details later based on the requirements
-	owner.EatFood();
+	//owner.EatFood();
 
 	}
 }
