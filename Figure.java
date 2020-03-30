@@ -199,8 +199,8 @@ public class Figure extends Object{
 	{
 		return this.Name;
 	}
-	//Achref : i ADDED  2 parameters because it needs to receive the specific snow and the lvl to be reduced 
-	public void removeSnow(Snow sn,int redlvl)
+	//Achref : i ADDED  1 parameters because it needs to receive the specific snow 
+	public void removeSnow(Snow sn)
 	{
 		// Logic: Remove snow level based on some logic e.g. if E a snow level > 0 and
 		// you have a shovel
@@ -209,7 +209,7 @@ public class Figure extends Object{
 			if (this.HasAShovel()) {
 				if(sn.level>0)
 				{
-					sn.level=sn.level-redlvl;
+					sn.level=sn.level-1;
 					sn.BuildingSnow();
 				}}}
 					
