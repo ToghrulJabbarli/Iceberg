@@ -19,6 +19,52 @@ public class StartProgram {
 		System.out.println("Press 'A' to add Player");
 		gui.ShowGUI();
 	}
+	/**
+	   *Ashraf Weheash Testing part
+	   *This is to test all the objects of the game like Charge, Flare, etc.
+	   *There are two different scenarios during the whole game
+	   	-1- A figure uses the object for himself like Charge, food, DivingSuit, Igloo. So I used the main
+			-So I used the main Figure -> figure1
+		-2- A figure uses the object on onther figure. So, I used figure1 as main figure and figure2 as second role
+			-like in a rope, figure1 will use it on figure2 to save it and figure2 will be given as a parameter in the Use()
+			function of figure1. Setting this parameter will be defined on GUI. 
+	public static void AshrafTest()
+	{
+		Figure figure1 = new Figure("Ashraf", 5, 2,4);
+		Figure figure2 = new Figure("Murad", 4,2 ,5);
+		
+		
+		Charge charge1 = new Charge();
+		charge1.Used(charge1, figure1);
+		
+		Flare f1 = new Flare();
+		f1.Used(f1, figure1);
+		
+		DivingSuit DS1 = new DivingSuit();
+		DS1.Used(DS1, figure1);
+		DS1.Use();
+		
+		Food food1 = new Food();
+		food1.Used(food1, figure1);
+		food1.Use();
+		
+		
+		Igloo igloo1 = new Igloo();
+		Igloo.Used(igloo1, figure1);
+		igloo1.Use();
+		
+		Rope rope1 = new Rope();
+		rope1.Used(rope1, figure1);
+		rope1.Use(figure2);
+		
+		Shovel shovel1 = new Shovel();
+		shovel1.Used(shovel1, figure1);
+		shovel1.Use();
+		
+		Snow snow1 = new Snow(3,4 ,3);
+		snow1.BuildingSnow();
+		
+	}
 
 	public static void MuradandToghrulTest() {
 		System.out.println(" --------------------MURAD & TOGHRUL------------------- \n");
@@ -30,8 +76,10 @@ public class StartProgram {
 		players.add(player_1);
 		players.add(player_2);
 		
+		GUI gui=new GUI(GUI.HEIGHT, GUI.WIDTH);
 		
 		Map map = new Map(25,25,players);
+		map.showOnGUI(gui, map);
 		for(int i = 0; i < players.size(); i++)
 		{
 			System.out.println("Player " + i + ": ID: " + players.get(i).getID() + ", Name: " + players.get(i).getName());
@@ -75,26 +123,29 @@ public class StartProgram {
 		System.out.println("1: Murad and Togrul");
 		System.out.println("2: Ashraf");
 		System.out.println("3: Achref");
-		System.out.println("4: Yifang---GUI");
-		System.out.println("If you want to test GUI, test it first. Then restart program and test others...");
+		System.out.println("4: Yifang");
 		while(true) {
 			Scanner input=new Scanner(System.in);
 			String result=input.next();
 			int choice=Integer.valueOf(result);
-			if (choice==1) {
+			switch (choice) {
+			case 1:
 				MuradandToghrulTest();
-			}
-			if (choice==2) {
-				MuradandToghrulTest();
-			}
-			if (choice==3) {
-				MuradandToghrulTest();
-			}
-			if (choice==4) {
+				break;
+			case 2:
+				AshrafTest();
+				break;
+			case 3:
+				break;
+			case 4:
+				YifangTest();
+				break;
+					
+
+			default:
 				break;
 			}
 		}
-		YifangTest();
 	}
 
 }
