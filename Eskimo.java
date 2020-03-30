@@ -1,3 +1,7 @@
+/* a Class that has the Eskimo method implemented
+@author Achrefmekni
+*/
+
 package Icefield;
 
 public class Eskimo extends Figure{
