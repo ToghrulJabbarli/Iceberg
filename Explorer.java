@@ -1,3 +1,6 @@
+/* a Class that has the Explorer method implemented
+@author Achrefmekni
+*/
 package Icefield;
 
 public class Explorer extends Figure{
