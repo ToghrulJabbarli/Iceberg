@@ -1,3 +1,7 @@
+/**
+ * This class is for Map's entry states 
+ * @author Murad Shahsuvarov & Toghrul Jabbarli
+ */
 package Icefield;
 
 public enum Cell {
