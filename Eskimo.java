@@ -1,4 +1,4 @@
-/* a Class that has the Eskimo method implemented
+/** a Class that has the Eskimo method implemented
 * @author Achref mekni
 */
 
