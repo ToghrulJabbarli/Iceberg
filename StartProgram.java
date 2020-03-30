@@ -19,6 +19,81 @@ public class StartProgram {
 		System.out.println("Press 'A' to add Player");
 		gui.ShowGUI();
 	}
+	public static void Snow_removing(Figure es) 
+	{
+		Shovel sh = new Shovel();
+		Snow sn = new Snow(5,4,25);
+		es.addItem(sh);
+		sn.BuildingSnow();
+		es.removeSnow(sn);
+	}
+    
+	public static void HealthManag(Figure es) throws Throwable
+	{
+		for (int i=0;i<10;i++)
+			es.DecrementHealth();
+		 
+		es.checkHealth();
+	}
+	
+	public static void Falls_intoWater(Figure es) throws Throwable
+	{
+		Rope rp = new Rope();
+		
+	    es.CollectItem(rp); 	
+		es.FallIntoWater(es);
+	}
+
+    public static void 	Explorer_UseSkill(Explorer ex, Map map1)
+    {
+    	Iceberg ic1= new Iceberg(20,15,10,map1);
+		ex.Skill_Use(ic1);
+    }
+    
+    public static void Eskimo_UseSkill(Eskimo es )
+    {
+    	es.Skill_Use();
+    }
+    
+    public static void GameEngine_Test(GameEngine ge,Figure es,Figure ex,Player p)
+    {
+    	
+		if(ex.getHealth()>0 & es.getHealth()>0)
+			ge.setWinner(p);
+    }
+	public static void Achref_Test() throws Throwable 
+	{
+		List<Player> playerss = new ArrayList<Player>();
+		Player player_3 = new Player("Murad");
+		Map map1 = new Map(25,25,playerss);
+		Eskimo es = new Eskimo("Ali",10,4,3);
+		Explorer ex = new Explorer("Achref",10,4,3);
+		GameEngine ge = new GameEngine(map1);
+		while(true) {
+			Scanner input=new Scanner(System.in);
+			String result=input.next();
+			int choice=Integer.valueOf(result);
+			
+		
+		switch(choice) {
+			case 1: Snow_removing(es);
+			break;
+			case 2: Explorer_UseSkill(ex,map1);
+			break;
+			case 3: Eskimo_UseSkill(es);
+			break;
+			case 4: GameEngine_Test(ge,es,ex,player_3);
+			break;
+			case 5: HealthManag(es);
+			break;
+			case 6: Falls_intoWater(es);
+			break;
+		}
+		}
+		
+		
+		
+	}
 
 	public static void MuradandToghrulTest() {
 		System.out.println(" --------------------MURAD & TOGHRUL------------------- \n");
@@ -127,7 +202,7 @@ public class StartProgram {
 				AshrafTest();
 			}
 			if (choice==3) {
-				MuradandToghrulTest();
+				Achref_Test();
 			}
 			if (choice==4) {
 				break;
