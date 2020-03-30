@@ -33,7 +33,6 @@ public class StartProgram {
 		GUI gui=new GUI(GUI.HEIGHT, GUI.WIDTH);
 		
 		Map map = new Map(25,25,players);
-		map.showOnGUI(gui, map);
 		for(int i = 0; i < players.size(); i++)
 		{
 			System.out.println("Player " + i + ": ID: " + players.get(i).getID() + ", Name: " + players.get(i).getName());
@@ -77,28 +76,26 @@ public class StartProgram {
 		System.out.println("1: Murad and Togrul");
 		System.out.println("2: Ashraf");
 		System.out.println("3: Achref");
-		System.out.println("4: Yifang");
+		System.out.println("If you want to test GUI, test it first. Then restart program and test others...");
 		while(true) {
 			Scanner input=new Scanner(System.in);
 			String result=input.next();
 			int choice=Integer.valueOf(result);
-			switch (choice) {
-			case 1:
+			if (choice==1) {
 				MuradandToghrulTest();
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			case 4:
-				YifangTest();
-				break;
-					
-
-			default:
+			}
+			if (choice==2) {
+				MuradandToghrulTest();
+			}
+			if (choice==3) {
+				MuradandToghrulTest();
+			}
+			if (choice==0) {
 				break;
 			}
+			input.close();
 		}
+		YifangTest();
 	}
 
 }
