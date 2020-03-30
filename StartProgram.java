@@ -19,6 +19,7 @@ public class StartProgram {
 		System.out.println("Press 'A' to add Player");
 		gui.ShowGUI();
 	}
+	//Snow Removing Scenario :
 	public static void Snow_removing(Figure es) 
 	{
 		Shovel sh = new Shovel();
@@ -27,7 +28,7 @@ public class StartProgram {
 		sn.BuildingSnow();
 		es.removeSnow(sn);
 	}
-    
+       // HealthManag Scenario :
 	public static void HealthManag(Figure es) throws Throwable
 	{
 		for (int i=0;i<10;i++)
@@ -35,7 +36,7 @@ public class StartProgram {
 		 
 		es.checkHealth();
 	}
-	
+	// Falls into Water Scenario :
 	public static void Falls_intoWater(Figure es) throws Throwable
 	{
 		Rope rp = new Rope();
@@ -43,24 +44,28 @@ public class StartProgram {
 	    es.CollectItem(rp); 	
 		es.FallIntoWater(es);
 	}
-
+   // Explorer Use skill :
     public static void 	Explorer_UseSkill(Explorer ex, Map map1)
     {
     	Iceberg ic1= new Iceberg(20,15,10,map1);
 		ex.Skill_Use(ic1);
     }
-    
+    // Explorer use skill :
     public static void Eskimo_UseSkill(Eskimo es )
     {
     	es.Skill_Use();
     }
     
+	// GameEngine Testing :
     public static void GameEngine_Test(GameEngine ge,Figure es,Figure ex,Player p)
     {
     	
 		if(ex.getHealth()>0 & es.getHealth()>0)
 			ge.setWinner(p);
     }
+	
+	// Achref : All my Test in  a function :
+	// use numeric Keypad to test each one seperately :
 	public static void Achref_Test() throws Throwable 
 	{
 		List<Player> playerss = new ArrayList<Player>();
