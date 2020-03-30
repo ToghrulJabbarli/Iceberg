@@ -1,3 +1,7 @@
+/* a Class that stores the Players information
+@author Achrefmekni
+*/
+
 package Icefield;
 
 import java.util.ArrayList;
