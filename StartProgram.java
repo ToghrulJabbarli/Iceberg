@@ -124,7 +124,7 @@ public class StartProgram {
 				MuradandToghrulTest();
 			}
 			if (choice==2) {
-				MuradandToghrulTest();
+				AshrafTest();
 			}
 			if (choice==3) {
 				MuradandToghrulTest();
