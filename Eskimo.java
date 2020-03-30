@@ -1,5 +1,5 @@
 /* a Class that has the Eskimo method implemented
-@author Achrefmekni
+* @author Achref mekni
 */
 
 package Icefield;
