@@ -44,7 +44,7 @@ public class Figure extends Object{
 	{
 		Skills.add(skill);
 	}
-	
+	//remove skill
 	public void removeSkill(int index)
 	{
 		Skills.remove(index);
@@ -55,37 +55,37 @@ public class Figure extends Object{
 	{
 		Items.add(item);
 	}
-	
+	//remove item
 	public void removeItem(int index)
 	{
 		Items.remove(index);
 	}
-	
+	//health++
 	public void IncrementHealth()
 	{
 		Health++;
 	}
-	
+	//health --
 	public void DecrementHealth()
 	{
 		Health--;
 	}
-	
+	//skills ++
 	public void IncrementSkills()
 	{
 		SkillsCount++;
 	}
-	
+	//skills --
 	public void DecrementSkills()
 	{
 		SkillsCount--;
 	}
-	
+	//items ++
 	public void IncrementsItems()
 	{
 		ItemsCount++;
 	}
-	
+	//items --
 	public void DecrementItems()
 	{
 		ItemsCount--;
