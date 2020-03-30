@@ -1,3 +1,7 @@
+/**
+ * This class is for actions which occurs in Iceberg cell 
+ * @author Murad Shahsuvarov & Toghrul Jabbarli
+ */
 package Icefield;
 
 public class Blizzard extends Matrix{
