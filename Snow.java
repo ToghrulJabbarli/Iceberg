@@ -1,5 +1,7 @@
 package Icefield;
 
+import java.io.IOException;
+
 public class Snow extends Object {
 	
 	
@@ -19,19 +21,20 @@ public class Snow extends Object {
 	}
 
 	
-	public void BuildingSnow() {
+	public void BuildingSnow(String output) throws IOException {
 		String crd = "(" + x + "," + y + ")";
 		System.out.println("Snow was set up on the " + crd);
-		
+		WriteFile(output,"Do you want to use it? Press any key to confirm" );
+
 	}
     
 	
-	public boolean isUsed() {
+	public boolean isUsed(String output) throws IOException {
 		// Logic: Check whether snow was set up or not
 		if(this.level>0)
 		{
 			//for printing only
-			this.BuildingSnow();
+			this.BuildingSnow(output);
 			return true;
 		}
 		return false;
