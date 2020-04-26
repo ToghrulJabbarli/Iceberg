@@ -5,6 +5,11 @@ public class CellGeneral {
 	public int snowLevel = 0;
 	public Cell cell;
 	
+	public CellGeneral() {
+		snowLevel = 0;
+		cell = Cell.EMPTY;
+	}
+	
 	
 	public void RunBlizzard() {
 		snowLevel++;

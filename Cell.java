@@ -5,8 +5,7 @@
 package Icefield;
 
 public enum Cell {
-	
-	
+
 	FIGURE,
 	ESKIMO,
 	EXPLORER,
@@ -17,7 +16,9 @@ public enum Cell {
 	ROPE,
 	SHOVEL,
 	FOOD,
-	IGLOO
+	IGLOO,
+	ICEBERG,
+	EMPTY
 	
 
 }

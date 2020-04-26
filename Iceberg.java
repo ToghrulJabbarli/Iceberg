@@ -4,6 +4,8 @@
  */
 package Icefield;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 // Iceberg is a submatrix of a matrix(MAP)
@@ -16,13 +18,12 @@ public class Iceberg extends Matrix{
 	public Map map; // map of the game
   
 	// Coordinates of the iceberg on the map
-	private int x;
-	private int y;
+	public List<Point> points;
+	
+	
 	//added by : Achref in order to use it in the Explorer class 
 	public int capacity;
 	// Blizzard on the iceberg
-	private Blizzard blizzard;
-
 	/**
 	 * 
 	 * @param IcebergID  ID of the icebergthat is need in GameEngine
@@ -30,39 +31,37 @@ public class Iceberg extends Matrix{
 	 * @param x Coordinates of the iceberg on the map
 	 * @param y Coordinates of the iceberg on the map
 	*/
-	public Iceberg(int height, int width, int cap, Map map) { // map is added
+	public Iceberg(int height, int width,List<Point> cords, int cap) { // map is added
 		super(height, width);
 		capacity=cap;
 		this.map = map; // map of the game
+		
 		// Properties of Blizzard is equal to the properties of the iceberg (so location and area)
-		blizzard = new Blizzard(this);
 		IcebergName = IcebergID;
+		
+		points = new ArrayList<Point>();
+		points  = cords;
+
+		
 		System.out.print("Iceberg " + IcebergID + " has been set up\n");
 		IcebergID++;
 		
 	}
-
-	public Integer getX()
-	{
-		return x;
+	
+	public void setMap(Map map) {
+		this.map = map;
 	}
 	
-	public Integer getY()
-	{
-		return y;
-	}
-	
-	public boolean isFittable() // map parameter is added
-	{
-		// Logic: Check whether iceberg(Submatrix) is fittable into the Map(Matrix)  
-		// E.g Matrix 50x50, Submatrix 60 x 50 => Not fittable , Submatrix 23x22 => Fittable
-		if(map.width >= this.width && map.height >= this.height) // Furhter logic can be applied
-		{
-			System.out.print("Iceberg " + IcebergName + " is fit into the map.\n");
-			return true;
+	public void print() {
+		System.out.print("ID: " + this.IcebergName + "\n" +
+	"NAME: " + this.getName() + "\n\n" 
+	+ "CAPACITY: " + this.capacity + "\n");
+		System.out.print("POINTS: \n");
+		for(int i = 0; i < this.points.size(); i++) {
+			System.out.println("(" + this.points.get(i).X + "," + this.points.get(i).Y + ")");
 		}
-		return false;
 	}
+	
 	/**
 	 * Check whether iceberg(Submatrix) is fittable into the Map(Matrix)
 	 * @return true if it is fittable otherwise false
@@ -72,15 +71,6 @@ public class Iceberg extends Matrix{
 		return "Iceberg " + IcebergName;
 	}
 	
-	public void Fit(Map map)
-	{
-		// Logic: Fit the iceberg into the map if it is fittable
-		// BIN PACKING ALGORITHM CAN BE APPLIED
-		if(isFittable())
-		{
-			// Bin packing algorithms starts fitting the iceberg (submatrix)
-			System.out.print("Iceberg " + IcebergName + ": Bin packing algorithm starts...\n");
-		}
-		
-	}
+	
+
 }
