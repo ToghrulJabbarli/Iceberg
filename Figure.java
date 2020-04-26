@@ -110,6 +110,7 @@ public class Figure extends Object{
 	{
 		// Logic: Eat food, increment health decrements move count
 		Health++;
+		//ya Achref, This line has a bug, fix it please
 		moveCount--;
 	}
 	
