@@ -1,5 +1,7 @@
 package Icefield;
 
+import java.io.IOException;
+
 public class FlareGun extends Object {
 	
 	// Number of parts of the weapon
@@ -27,7 +29,7 @@ public class FlareGun extends Object {
 		return false;
 	}
 	
-	public void Charge(Charge charge, Flare flare)
+	public void Charge(Charge charge, Flare flare, String output) throws IOException
 	{
 		// Logic: Charges the Flare Gun
 		if (owner.search_for_item(charge) && owner.search_for_item(flare))
@@ -36,10 +38,12 @@ public class FlareGun extends Object {
 			this.NUM_OF_FLARES++;
 			this.NUM_OF_GUN++;
 			System.out.println("Gun is ready to shoot, sir");
+			WriteFile(output,"Gun is ready to shoot, sir");
+
 		}
 	}
 	
-	public void Shoot(Player player)
+	public void Shoot(Player player, String output) throws IOException
 	{
 		int count=0;
 		// Logic: Shooting logic
@@ -59,6 +63,7 @@ public class FlareGun extends Object {
 			if(count == owner_player.figures.size()) 
 			{
 				System.out.println("Gun is Fired, You won");
+				WriteFile(output,"Gun is Fired, You won");
 				GameEngine.setWinner(player);
 			}
 			
