@@ -13,7 +13,7 @@ public class Figure extends Object{
 	// Current Map where the figure is playing
 	private static CellGeneral[][] map_cells;
 	protected Cell STATE;
-	private Point currentposition;
+	protected Point currentposition;
 	// Total count of the move possibilities
 	private Integer moveCount;
 	
@@ -97,8 +97,9 @@ public class Figure extends Object{
 	public void Move(int x, int y)
 	{
 		// Logic: Move Figure to the cell with x and y coordinates
-		System.out.println(map_cells[x][y].cell.name());
-		System.out.println("you are at X =  : "+ x + " , Y = "+ y);
+		setPosition(x,y);
+		//System.out.println(map_cells[x][y].cell.name());
+		//System.out.println("you are at X =  : "+ x + " , Y = "+ y);
 		
 	}
 	// i added 2 params x and y to check the cell 
@@ -108,7 +109,11 @@ public class Figure extends Object{
 		// E.g Without Show 1 step with 2 step
 		// Up, Down , Right , Left is possible
 		if(cellIsCoveredBy(x,y)== false)
+			{
+			
 			moveCount--;
+			}
+			
 		moveCount-=2;
 		
 	}
