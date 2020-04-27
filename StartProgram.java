@@ -26,10 +26,66 @@ public class StartProgram {
 	public static void MuradToghrulBlizzardTest() {
 		
 	}
-	public static void FlareUsedGameWon(String input,Figure fig,Figure fig1,FlareGun fg,Flare fl,Charge ch,Gun g,Player player) throws NullPointerException, IOException
+
+	//Achref tests
+public static void FigureCancellationOfMove(String input,int x , int y,Figure fig,Player player) throws IOException
+	{
+		BufferedReader reader = new BufferedReader(new FileReader(input));
+		String output="Results Of MoveCancellation.txt";
+		BufferedWriter writer = new BufferedWriter(new FileWriter(output,true));
+
+	    
+
+		String line = reader.readLine();
+
+	    while (line!=null) 
+	    {
+	    	
+	    
+	        if(line.contains("CreateExplorer"))
+	        {
+	        	 fig=new Explorer("Achref",5,2,4,player);
+	        	 writer.write("Figure(Achref,5,2,4) Created");
+	        	 writer.newLine();
+	        }
+	        else if(line.contains("CreatePlayer"))
+			{
+				player=new Player("Achref");
+				writer.write("Player Achref Created");
+	       	    writer.newLine();
+			}
+	        else if(line.contains("MovePlayerTo(7,6)"))
+			{
+				int x1 =fig.currentposition.X;
+				int y1 =fig.currentposition.Y;
+	        	fig.Move(x, y);
+	        	int x2 =fig.currentposition.X;
+	        	int y2 =fig.currentposition.Y;
+	   
+	        
+				writer.write("Figure is Moved from("+x1+","+y1+")to("+x2+","+y2+")");
+	       	    writer.newLine();
+	       	    writer.write("Figure is at("+x2+","+y2+")");
+	       	    writer.newLine();
+	       	    fig.Move(x1, y1);
+	       	    writer.write("Move is Cancelled !");
+	       	    writer.newLine();
+	       	    writer.write("Figure is back to("+x1+","+y1+")");
+	       	    writer.newLine();
+			}
+	        System.out.println(line);
+			line=reader.readLine();
+			
+			
+	    }
+	    reader.close();
+	    writer.close();
+	}
+	
+public static void FlareUsedGameWon(String input,Figure fig,Figure fig1,FlareGun fg,Flare fl,Charge ch,Gun g,Player player) throws NullPointerException, IOException
 	{
 	BufferedReader reader = new BufferedReader(new FileReader(input));
-	String output="Results Of ExplorerUseSkill.txt";
+	String output="Results Of FlareGun.txt";
 	BufferedWriter writer = new BufferedWriter(new FileWriter(output,true));
 
     
@@ -227,9 +283,13 @@ public class StartProgram {
 		Gun g=new Gun();
 		
 		FlareGun fg=new FlareGun();
-		String input=new String("Explorer1.txt");
+		String input=new String("FlareGunTest.txt");
     	
 		FlareUsedGameWon(input,ex1,es1,fg,fl,ch,g,player);
+		
+		FigureCancellationOfMove("MoveCancellation.txt",7,6,ex1,player);
+		
+	}
 		
 	}
 }
