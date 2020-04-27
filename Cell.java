@@ -4,9 +4,12 @@
  */
 package Icefield;
 
+// i added water name to the Cell
 public enum Cell {
-
+	
+	
 	FIGURE,
+	WATER,
 	ESKIMO,
 	EXPLORER,
 	DIVING_SUIT,
@@ -16,9 +19,7 @@ public enum Cell {
 	ROPE,
 	SHOVEL,
 	FOOD,
-	IGLOO,
-	ICEBERG,
-	EMPTY
+	IGLOO
 	
 
 }
