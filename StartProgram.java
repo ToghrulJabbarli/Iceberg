@@ -26,7 +26,96 @@ public class StartProgram {
 	public static void MuradToghrulBlizzardTest() {
 		
 	}
-	
+	public static void FlareUsedGameWon(String input,Figure fig,Figure fig1,FlareGun fg,Flare fl,Charge ch,Gun g,Player player) throws NullPointerException, IOException
+	{
+	BufferedReader reader = new BufferedReader(new FileReader(input));
+	String output="Results Of ExplorerUseSkill.txt";
+	BufferedWriter writer = new BufferedWriter(new FileWriter(output,true));
+
+    
+
+	String line = reader.readLine();
+
+    while (line!=null) 
+    {
+    	
+    
+        if(line.contains("CreateExplorer"))
+        {
+        	 fig=new Explorer("Achref",5,2,4,player);
+        	 writer.write("Figure(Achref,5,2,4) Created");
+        	 writer.newLine();
+        }
+        else if(line.contains("CreateEskimo"))
+        {
+        	 fig1=new Eskimo("Azer",5,2,4,player);
+        	 writer.write("Figure(Azer,5,2,4) Created");
+        	 writer.newLine();
+        }
+        else if(line.contains("CreateFlareGun")) 
+		{
+			 fg=new FlareGun();
+			 writer.write("FlareGun Created");
+        	 writer.newLine();
+		}
+		
+		else if(line.contains("CreateFlare"))
+		{
+			 fl = new Flare();
+			 writer.write("Flare Created");
+        	 writer.newLine();
+		}
+		else if(line.contains("CreateCharge"))
+		{
+			 ch=new Charge();
+			 writer.write("Charge Created");
+        	 writer.newLine();
+		}
+		else if(line.contains("CreateGun"))
+		{
+			 g=new Gun();
+			 writer.write("GunCreated");
+        	 writer.newLine();
+		}
+		else if(line.contains("PickGun"))
+		{
+			fig.CollectItem(g);
+			writer.write("Gun Picked");
+       	    writer.newLine();
+		}
+		else if(line.contains("PickFlare"))
+		{
+			fig.CollectItem(fl);
+			writer.write("Flare Picked");
+       	    writer.newLine();
+		}
+		else if(line.contains("PickCharge"))
+		{
+			fig.CollectItem(ch);
+			writer.write("Charge Picked");
+       	    writer.newLine();
+		}
+		else if(line.contains("UseFlareGun"))
+		{
+			fg.Charge(fig,ch, fl, g);
+			fg.Shoot(player);
+			writer.write("FlareGun Used");
+       	    writer.newLine();
+		}
+		else if(line.contains("CreatePlayer"))
+		{
+			player=new Player("Achref");
+			writer.write("Player Achref Created");
+       	    writer.newLine();
+		}
+        System.out.println(line);
+		line=reader.readLine();
+		
+		
+    }
+    reader.close();
+    writer.close();
+	}
 	
 	public static void main(String[] args) throws Throwable {
 
@@ -128,5 +217,19 @@ public class StartProgram {
 				//......Add more options if you need
 			}
 		}
+	Player player=new Player("empty");
+    	Explorer ex1=new Explorer("empty",0,0,0,player);
+    	Eskimo es1=new Eskimo("empty",0,0,0,player);
+    	player.figures.add(ex1);
+    	player.figures.add(es1);
+    	Charge ch=new Charge();
+    	Flare fl=new Flare() ;
+		Gun g=new Gun();
+		
+		FlareGun fg=new FlareGun();
+		String input=new String("Explorer1.txt");
+    	
+		FlareUsedGameWon(input,ex1,es1,fg,fl,ch,g,player);
+		
 	}
 }
