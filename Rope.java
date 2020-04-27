@@ -13,21 +13,18 @@ public class Rope extends Object
 		this.Name = "Rope";
 	}
 	
-	public void Use(Figure rescued_figure, String input, String output) throws IOException 
+	public void Use(Figure rescued_figure)
 	{
 		
 		System.out.println("Do you want to use it? Press any key to confirm");
-		WriteFile(output,"Do you want to use it? Press any key to confirm" );
 
 
-		if(ReadFile (input, "use on " + rescued_figure.getName() ))
-	    {
+		
 			System.out.println(rescued_figure.getName() + "has been rescued successfully !");
-			this.WriteFile(output, rescued_figure.getName() + "has been rescued successfully !");
 
 			rescued_figure.Move(0,0);
 			this.used = true;
 
-	    }
+	    
 	}
 }
