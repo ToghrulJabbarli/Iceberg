@@ -9,7 +9,7 @@ public class FlareGun extends Object {
 	public int NUM_OF_CHARGES;
 	public int NUM_OF_GUN;
 	//++
-	public Player owner_player;
+	//public Player owner_player;
 	
 	// Booleans for enabaling the shooting from the flare gun
 	public boolean gunIsCollected;
@@ -29,21 +29,19 @@ public class FlareGun extends Object {
 		return false;
 	}
 	
-	public void Charge(Charge charge, Flare flare, String output) throws IOException
+	public void Charge(Figure owner1,Charge charge, Flare flare,Gun gun)
 	{
 		// Logic: Charges the Flare Gun
-		if (owner.search_for_item(charge) && owner.search_for_item(flare))
+		if (owner1.search_for_item(charge) && owner1.search_for_item(flare) && owner1.search_for_item(gun))
 		{
 			this.NUM_OF_CHARGES++;
 			this.NUM_OF_FLARES++;
 			this.NUM_OF_GUN++;
 			System.out.println("Gun is ready to shoot, sir");
-			WriteFile(output,"Gun is ready to shoot, sir");
-
 		}
 	}
 	
-	public void Shoot(Player player, String output) throws IOException
+	public void Shoot(Player player)
 	{
 		int count=0;
 		// Logic: Shooting logic
@@ -53,17 +51,16 @@ public class FlareGun extends Object {
 			//if all the figures' position is the same
 			//and since we are in the body of "if" so the gun is loaded and can shoot
 			//game engine has to set winning
-			for(int i=1; i<owner_player.figures.size(); i++)
+			for(int i=1; i<player.figures.size(); i++)
 			{
-				if((owner_player.figures.get(i).x == owner_player.figures.get(i-1).x) &&
-				   (owner_player.figures.get(i).y == owner_player.figures.get(i-1).y))
+				if((player.figures.get(i).x == player.figures.get(i-1).x) &&
+				   (player.figures.get(i).y == player.figures.get(i-1).y))
 					count++;
 			}
 			
-			if(count == owner_player.figures.size()) 
+			if(count == player.figures.size()) 
 			{
 				System.out.println("Gun is Fired, You won");
-				WriteFile(output,"Gun is Fired, You won");
 				GameEngine.setWinner(player);
 			}
 			
