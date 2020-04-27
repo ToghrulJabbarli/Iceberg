@@ -10,7 +10,7 @@ import java.util.List;
 public class Figure extends Object{
 	
 	// Current Map where the figure is playing
-	private static Cell[][] map_cells;
+	private static CellGeneral[][] map_cells;
 	
 	// Total count of the move possibilities
 	private Integer moveCount;
@@ -19,19 +19,20 @@ public class Figure extends Object{
 	private String Name;
 	//Ashraf: Generated Getters and Setters
 	private int Health;
-	
+	private Player owner_player;
 	private List<String> Skills;
 	private int SkillsCount;
 	
 	private List<Object> Items=new ArrayList<Object>();
 	private int ItemsCount;
 	
-	public Figure(String Name,int Health,int SkillsCount, int ItemsCount)
+	public Figure(String Name,int Health,int SkillsCount, int ItemsCount, Player player)
 	{
 		this.Name = Name;
 		this.Health = Health; 
 		this.SkillsCount = SkillsCount;
 		this.ItemsCount = ItemsCount;
+		this.owner_player=player;
 		
 		// Gets the coordinates and info of Map Cells
 		this.map_cells = Map.getMapCells();
@@ -44,7 +45,7 @@ public class Figure extends Object{
 	{
 		Skills.add(skill);
 	}
-	//remove skill
+	
 	public void removeSkill(int index)
 	{
 		Skills.remove(index);
@@ -55,37 +56,37 @@ public class Figure extends Object{
 	{
 		Items.add(item);
 	}
-	//remove item
+	
 	public void removeItem(int index)
 	{
 		Items.remove(index);
 	}
-	//health++
+	
 	public void IncrementHealth()
 	{
 		Health++;
 	}
-	//health --
+	
 	public void DecrementHealth()
 	{
 		Health--;
 	}
-	//skills ++
+	
 	public void IncrementSkills()
 	{
 		SkillsCount++;
 	}
-	//skills --
+	
 	public void DecrementSkills()
 	{
 		SkillsCount--;
 	}
-	//items ++
+	
 	public void IncrementsItems()
 	{
 		ItemsCount++;
 	}
-	//items --
+	
 	public void DecrementItems()
 	{
 		ItemsCount--;
@@ -94,33 +95,37 @@ public class Figure extends Object{
 	public void Move(int x, int y)
 	{
 		// Logic: Move Figure to the cell with x and y coordinates
+		System.out.println(map_cells[x][y].cell.name());
 		System.out.println("you are at X =  : "+ x + " , Y = "+ y);
 		
 	}
-	
-	public void Step()
+	// i added 2 params x and y to check the cell 
+	public void Step(int x , int y)
 	{
 		// Logic: Step on a particular cell based on the information you have.
 		// E.g Without Show 1 step with 2 step
 		// Up, Down , Right , Left is possible
-		moveCount--;
+		if(cellIsCoveredBy(x,y)== false)
+			moveCount--;
+		moveCount-=2;
+		
 	}
 	
 	public void EatFood()
 	{
 		// Logic: Eat food, increment health decrements move count
 		Health++;
-		//ya Achref, This line has a bug, fix it please
 		moveCount--;
 	}
 	
+	// i added the (x,y) coordinates of the cell 
 	
-	
-	public boolean isWater()
+	public boolean isWater(int x, int y)
 	{
 		// Logic: Checks whether cell is a water or not
-		
-		return true;
+		if(map_cells[x][y].cell.name() =="WATER")
+			return true;
+		return false ;
 	}
 	
 	// Achref : i added figure parameter because we need a specific figure to fall into water 
@@ -142,7 +147,7 @@ public class Figure extends Object{
 				System.out.println("Saved");}
 			else
 				fig.Die();
-			   System.out.println("Saved");}}
+			   }}
 				
 		catch(NullPointerException e) {
 			System.out.println("errrrorrr");
@@ -154,10 +159,11 @@ public class Figure extends Object{
 	public boolean HasAShovel()
 	{
 		// Logic: Checks whether player has a shovel or not
-		for( int i=0 ;i<Items.size();i++) {
-			if (Items.get(i).Name == "Shovel")
-		        break;}
-		return true;
+		Shovel sv=new Shovel();
+		if (search_for_item(sv)==true)
+			return true ;
+		return false;
+		
 	}
 	
 	
@@ -165,7 +171,6 @@ public class Figure extends Object{
 	public void Object_Use(Object obj)
 	{
 		// Logic: Use a particular object
-		
 		for( int i=0 ;i<Items.size();i++) {
 			if (Items.get(i).Name == obj.Name)
 				removeItem(i); }
@@ -174,10 +179,10 @@ public class Figure extends Object{
 		System.out.println("this "+obj.Name +" has been used");
 	}
 	
-	public void Skill_Use()
+	public void Skill_Use() throws IOException
 	{
 		// Logic: Use a particular skill
-		moveCount--;
+		DecrementSkills();
 	}
     //There should be a parameter here of the item collected and then some logic to add it to the Items list
 	//i added a parameter Object it1
@@ -204,37 +209,36 @@ public class Figure extends Object{
 	{
 		return this.Name;
 	}
-	//Achref : i ADDED  1 parameters because it needs to receive the specific snow 
-	public void removeSnow(Snow sn)
+	//Achref : i ADDED  2 parameters because it needs to receive the cell position and check if it is covered or not 
+	public void removeSnow(int x , int y)
 	{
 		// Logic: Remove snow level based on some logic e.g. if E a snow level > 0 and
 		// you have a shovel
+		if (this.HasAShovel())
+			map_cells[x][y].digSnow();
 		
-		for( int i=0 ;i<Items.size();i++) {
-			if (this.HasAShovel()) {
-				if(sn.level>0)
-				{
-					sn.level=sn.level-1;
-					sn.BuildingSnow();
-				}}}
-					
-			
-		System.out.println("Snow Removed");
+		/*for (int i=0;i<Items.size();i++) {
+			if(Items.get(i).Name=="SHOVEL")
+				removeItem(i);
+		}*/
+				
+		System.out.println("done");
 	}
 
 	public String getCellsName(int x, int y)
 	{
 		// Logic: Check the name of the cell
 		
-		return this.map_cells[x][y].name();
+		return this.map_cells[x][y].cell.name();
 	}
 	
 	public boolean cellIsCoveredBy(int x, int y)
 	{
 		// Logic: Check whether the cell's with coordinates (x and y) state is snow and
 		// check it's level
-		
-		return true;
+		if(map_cells[x][y].snowLevel>0)
+			return true;
+		return false ;
 		
 	}
 	
