@@ -12,6 +12,9 @@ public class Map extends Matrix{
 	    // Cells of the matrix each of which has its own state
 		protected static CellGeneral Map[][];
 		
+		// BLIZZARD OCCURANCE
+		public static int blizzard_counter = 0;
+		
 		private List<Iceberg> icebergs;
 		
 		// List of snow cells with coordinates
@@ -32,19 +35,29 @@ public class Map extends Matrix{
 			this.Map = new CellGeneral[height][width];
 			for(int i = 0; i < this.Map.length; i++) {
 				for(int j = 0; j < this.Map[0].length; j++) {
-					this.Map[i][j] = new CellGeneral();
+					this.Map[i][j] = new CellGeneral(false);
 				}
 			}
-			
 			
 			// Setting up the players on the map
 			this.players = _players;
 			
 			this.icebergs = icebergs;
 			
-			System.out.print("Map and Players are set!");
 		}
-		
+		public Map(int height, int width)
+		{
+			super(height,width);
+			
+			// Setting up the size of the matrix to the area
+			this.Map = new CellGeneral[height][width];
+			for(int i = 0; i < this.Map.length; i++) {
+				for(int j = 0; j < this.Map[0].length; j++) {
+					this.Map[i][j] = new CellGeneral(false);
+				}
+			}			
+			
+		}
 		
 		public static CellGeneral[][] getMapCells()
 		{
